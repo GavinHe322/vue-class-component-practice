@@ -1,0 +1,21 @@
+{
+  "name": "vue-class-component-practice",
+  "version": "1.0.0",
+  "description": "学习vue-class-component",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GavinHe322/vue-class-component-practice.git"
+  },
+  "author": "Gavin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GavinHe322/vue-class-component-practice/issues"
+  },
+  "homepage": "https://github.com/GavinHe322/vue-class-component-practice#readme",
+  "peerDependencies": {
+    "vue": "^2.6.14"
+  }
+}
