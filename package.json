@@ -17,5 +17,11 @@
   "homepage": "https://github.com/GavinHe322/vue-class-component-practice#readme",
   "peerDependencies": {
     "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
+  "dependencies": {
+    "vue": "^2.6.14"
   }
 }
