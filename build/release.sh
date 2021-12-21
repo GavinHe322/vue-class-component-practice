@@ -11,6 +11,9 @@ then
   # npm run clean
   VERSION=$VERSION npm run build
 
+  # changelog
+  npm run changelog
+
   # commit
   git add -A
   git commit -m "[build] $VERSION"
