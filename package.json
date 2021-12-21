@@ -1,6 +1,6 @@
 {
   "name": "vue-class-component-practice",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "学习vue-class-component",
   "main": "dist/vue-class-component-practice.common.js",
   "module": "dist/vue-class-component-practice.esm.js",
