@@ -1,6 +1,6 @@
 
 /**
- * vue-class-component-practice v1.0.5
+ * vue-class-component-practice v1.0.6
  * (c) 2021 Gavin
  */
 
