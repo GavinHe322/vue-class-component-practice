@@ -11,7 +11,7 @@ const debug = require('debug')
 
 debug('name')(name)
 
-const banner = 
+const banner =
 `
 /**
  * vue-class-component-practice v${version}
@@ -89,7 +89,7 @@ build([
   process.exit(1)
 })
 
-function genConfig(opts) {
+function genConfig (opts) {
   const config = {
     input: {
       input: resolve('lib/index.js'),
@@ -119,7 +119,7 @@ function genConfig(opts) {
       'process.env.NODE_ENV': JSON.stringify(opts.env)
     }))
   }
-  
+
   return config
 }
 
@@ -141,7 +141,7 @@ function build (builds) {
   return next()
 }
 
-function buildEntry({ input, output }) {
+function buildEntry ({ input, output }) {
   const isProd = /min\.js$/.test(output.file)
   return rollup.rollup(input)
     .then(bundle => bundle.generate(output))
@@ -161,9 +161,9 @@ function buildEntry({ input, output }) {
     })
 }
 
-function write(dest, code, zip) {
+function write (dest, code, zip) {
   return new Promise((resolve, reject) => {
-    function report(extra) {
+    function report (extra) {
       console.log(blue(path.relative(process.cwd(), dest)) + ' ' + getSize(code) + (extra || ''))
       resolve()
     }
@@ -182,14 +182,14 @@ function write(dest, code, zip) {
   })
 }
 
-function getSize(code) {
+function getSize (code) {
   return (code.length / 1024).toFixed(2) + 'kb'
 }
 
-function logError(e) {
+function logError (e) {
   console.log(e)
 }
 
-function blue(str) {
+function blue (str) {
   return '\x1b[1m\x1b[34m' + str + '\x1b[39m\x1b[22m'
 }

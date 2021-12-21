@@ -2,9 +2,9 @@ import Vue from 'vue'
 import { VueClass } from './declarations'
 import { warn } from './util'
 
-export function collectDataFromConstructor(vm: Vue, Component: VueClass<Vue>) {
+export function collectDataFromConstructor (vm: Vue, Component: VueClass<Vue>) {
   const originalInit = Component.prototype._init
-  Component.prototype._init = function(this: Vue) {
+  Component.prototype._init = function (this: Vue) {
     const keys = Object.getOwnPropertyNames(vm)
     if (vm.$options.props) {
       for (const key in vm.$options.props) {
