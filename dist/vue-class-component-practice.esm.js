@@ -1,6 +1,6 @@
 
 /**
- * vue-class-component-practice v1.0.6
+ * vue-class-component-practice v1.0.7
  * (c) 2021 Gavin
  */
 
@@ -178,7 +178,8 @@ function collectDataFromConstructor(vm, Component) {
   return plainData;
 }
 
-var $internalHooks = ['data', 'beforeCreate', 'created', 'beforeMount', 'mounted', 'beforeDestroy', 'destroyed', 'beforeUpdate', 'updated', 'activated', 'deactivated', 'render', 'errorCaptured', 'serverPrefetch'];
+var $internalHooks = ['data', 'beforeCreate', 'created', 'beforeMount', 'mounted', 'beforeDestroy', 'destroyed', 'beforeUpdate', 'updated', 'activated', 'deactivated', 'render', 'errorCaptured', 'serverPrefetch' // 2.6
+];
 function componentFactory(Component) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   options.name = options.name || Component._componentTag || Component.name;

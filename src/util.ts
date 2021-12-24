@@ -13,7 +13,7 @@ export interface VueDecorator {
   // Property decorator
   (target: Vue, key: string): void
 
-  // parameter decorator
+  // Parameter decorator
   (target: Vue, key: string, index: number): void
 }
 
@@ -46,7 +46,6 @@ export type MixedVueClass<
   ? VueClass<UnionToIntersection<ExtractInstance<T>>>
   : never
 
-// retain legacy
 export function mixins<A> (CtorA: VueClass<A>): VueClass<A>
 export function mixins<A, B> (CtorA: VueClass<A>, CtorB: VueClass<B>): VueClass<A & B>
 export function mixins<A, B, C> (CtorA: VueClass<A>, CtorB: VueClass<B>, CtorC: VueClass<C>): VueClass<A & B & C>

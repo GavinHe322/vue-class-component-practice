@@ -6,20 +6,11 @@ const rollup = require('rollup')
 const replace = require('rollup-plugin-replace')
 const babel = require('rollup-plugin-babel')
 const version = process.env.VERSION || require('../package.json').version
-const name = process.env.NAME || require('../package.json').name
-const debug = require('debug')
-
-debug('name')(name)
 
 const banner =
-`
-/**
- * vue-class-component-practice v${version}
- * (c) 2021 Gavin
- */
-`
-
-debug('banner')(banner)
+`/**
+  * vue-class-component-practice v${version}
+  */`
 
 if (!fs.existsSync('dist')) {
   fs.mkdirSync('dist')
@@ -52,36 +43,32 @@ const babelConfigForLegacy = {
   ]
 }
 
-// function fileBuildPrefix(module) {
-//   return `dist/${name}${module}`
-// }
-
 build([
   {
-    file: resolve('dist/vue-class-component-practice.js'),
+    file: resolve('dist/vue-class-component.js'),
     format: 'umd',
     env: 'development'
   },
   {
-    file: resolve('dist/vue-class-component-practice.min.js'),
+    file: resolve('dist/vue-class-component.min.js'),
     format: 'umd',
     env: 'production'
   },
   {
-    file: resolve('dist/vue-class-component-practice.common.js'),
+    file: resolve('dist/vue-class-component.common.js'),
     format: 'cjs'
   },
   {
-    file: resolve('dist/vue-class-component-practice.esm.js'),
+    file: resolve('dist/vue-class-component.esm.js'),
     format: 'esm'
   },
   {
-    file: resolve('dist/vue-class-component-practice.esm.browser.js'),
+    file: resolve('dist/vue-class-component.esm.browser.js'),
     format: 'esm',
     env: 'development'
   },
   {
-    file: resolve('dist/vue-class-component-practice.esm.browser.min.js'),
+    file: resolve('dist/vue-class-component.esm.browser.min.js'),
     format: 'esm',
     env: 'production'
   }
@@ -132,9 +119,9 @@ function build (builds) {
       if (built < total) {
         return next()
       }
-    }).catch(err => {
-      logError(err)
-      throw err
+    }).catch(error => {
+      logError(error)
+      throw error
     })
   }
 

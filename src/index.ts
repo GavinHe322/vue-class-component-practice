@@ -10,7 +10,6 @@ function Component (options: ComponentOptions<Vue> | VueClass<Vue>): any {
   if (typeof options === 'function') {
     return componentFactory(options)
   }
-
   return function (Component: VueClass<Vue>) {
     return componentFactory(Component, options)
   }

@@ -1,5 +1,5 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin')
+// const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: 'development',

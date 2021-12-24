@@ -1,9 +1,6 @@
-
 /**
- * vue-class-component-practice v1.0.7
- * (c) 2021 Gavin
- */
-
+  * vue-class-component-practice v1.0.7
+  */
 import Vue from 'vue';
 
 function reflectionIsSupported() {

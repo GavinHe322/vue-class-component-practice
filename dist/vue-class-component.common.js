@@ -1,27 +1,90 @@
-
 /**
- * vue-class-component-practice v1.0.7
- * (c) 2021 Gavin
- */
+  * vue-class-component-practice v1.0.7
+  */
+'use strict';
 
-import Vue from 'vue';
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var Vue = require('vue');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var Vue__default = /*#__PURE__*/_interopDefaultLegacy(Vue);
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+}
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
+}
+
+function _iterableToArray(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
 
 function reflectionIsSupported() {
   return typeof Reflect !== 'undefined' && Reflect.defineMetadata && Reflect.getOwnMetadataKeys;
 }
 function copyReflectionMetadata(to, from) {
   forwardMetadata(to, from);
-  Object.getOwnPropertyNames(from.prototype).forEach(key => {
+  Object.getOwnPropertyNames(from.prototype).forEach(function (key) {
     forwardMetadata(to.prototype, from.prototype, key);
   });
-  Object.getOwnPropertyNames(from).forEach(key => {
+  Object.getOwnPropertyNames(from).forEach(function (key) {
     forwardMetadata(to, from, key);
   });
 }
 
 function forwardMetadata(to, from, propertyKey) {
   var metaKeys = propertyKey ? Reflect.getOwnMetadataKeys(from, propertyKey) : Reflect.getOwnMetadataKeys(from);
-  metaKeys.forEach(metaKey => {
+  metaKeys.forEach(function (metaKey) {
     var metadata = propertyKey ? Reflect.getOwnMetadata(metaKey, from, propertyKey) : Reflect.getOwnMetadata(metaKey, from);
 
     if (propertyKey) {
@@ -37,7 +100,7 @@ var fakeArray = {
 };
 var hasProto = fakeArray instanceof Array;
 function createDecorator(factory) {
-  return (target, key, index) => {
+  return function (target, key, index) {
     var Ctor = typeof target === 'function' ? target : target.constructor;
 
     if (!Ctor.__decorators__) {
@@ -48,7 +111,9 @@ function createDecorator(factory) {
       index = undefined;
     }
 
-    Ctor.__decorators__.push(options => factory(options, key, index));
+    Ctor.__decorators__.push(function (options) {
+      return factory(options, key, index);
+    });
   };
 }
 function mixins() {
@@ -56,12 +121,13 @@ function mixins() {
     Ctors[_key] = arguments[_key];
   }
 
-  return Vue.extend({
+  return Vue__default["default"].extend({
     mixins: Ctors
   });
 }
 function isPrimitive(value) {
-  var type = typeof value;
+  var type = _typeof(value);
+
   return value == null || type !== 'object' && type !== 'function';
 }
 function warn(message) {
@@ -74,6 +140,8 @@ function collectDataFromConstructor(vm, Component) {
   var originalInit = Component.prototype._init;
 
   Component.prototype._init = function () {
+    var _this = this;
+
     var keys = Object.getOwnPropertyNames(vm);
 
     if (vm.$options.props) {
@@ -84,10 +152,12 @@ function collectDataFromConstructor(vm, Component) {
       }
     }
 
-    keys.forEach(key => {
-      Object.defineProperty(this, key, {
-        get: () => vm[key],
-        set: value => {
+    keys.forEach(function (key) {
+      Object.defineProperty(_this, key, {
+        get: function get() {
+          return vm[key];
+        },
+        set: function set(value) {
           vm[key] = value;
         },
         configurable: true
@@ -98,14 +168,14 @@ function collectDataFromConstructor(vm, Component) {
   var data = new Component();
   Component.prototype._init = originalInit;
   var plainData = {};
-  Object.keys(data).forEach(key => {
+  Object.keys(data).forEach(function (key) {
     if (data[key] !== undefined) {
       plainData[key] = data[key];
     }
   });
 
-  {
-    if (!(Component.prototype instanceof Vue) && Object.keys(plainData).length > 0) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (!(Component.prototype instanceof Vue__default["default"]) && Object.keys(plainData).length > 0) {
       warn('Component class must inherit Vue or its descendant class ' + 'when class property is used.');
     }
   }
@@ -139,12 +209,9 @@ function componentFactory(Component) {
       } else {
         // typescript decorated data
         (options.mixins || (options.mixins = [])).push({
-          data() {
-            return {
-              [key]: descriptor.value
-            };
+          data: function data() {
+            return _defineProperty({}, key, descriptor.value);
           }
-
         });
       }
     } else if (descriptor.get || descriptor.set) {
@@ -156,22 +223,23 @@ function componentFactory(Component) {
     }
   });
   (options.mixins || (options.mixins = [])).push({
-    data() {
+    data: function data() {
       return collectDataFromConstructor(this, Component);
     }
-
   }); // decorate options
 
   var decorators = Component.__decorators__;
 
   if (decorators) {
-    decorators.forEach(fn => fn(options));
+    decorators.forEach(function (fn) {
+      return fn(options);
+    });
     delete Component.__decorators__;
   } // find super
 
 
   var superProto = Object.getPrototypeOf(Component.prototype);
-  var Super = superProto instanceof Vue ? superProto.constructor : Vue;
+  var Super = superProto instanceof Vue__default["default"] ? superProto.constructor : Vue__default["default"];
   var Extended = Super.extend(options);
   forwardStaticMembers(Extended, Component, Super);
 
@@ -195,7 +263,7 @@ var shouldIgnore = {
 
 function forwardStaticMembers(Extended, Original, Super) {
   // We have to use getOwnPropertyNames since Babel registers methods as non-enumerable
-  Object.getOwnPropertyNames(Original).forEach(key => {
+  Object.getOwnPropertyNames(Original).forEach(function (key) {
     // Skip the properties that should not be overwritten
     if (shouldIgnore[key]) {
       return;
@@ -232,7 +300,7 @@ function forwardStaticMembers(Extended, Original, Super) {
     } // Warn if the users manually declare reserved properties
 
 
-    if (reservedPropertyNames.indexOf(key) >= 0) {
+    if (process.env.NODE_ENV !== 'production' && reservedPropertyNames.indexOf(key) >= 0) {
       warn("Static property name '".concat(key, "' declared on class '").concat(Original.name, "' ") + 'conflicts with reserved property name of Vue internal. ' + 'It may cause unexpected behavior of the component. Consider renaming the property.');
     }
 
@@ -251,7 +319,9 @@ function Component(options) {
 }
 
 Component.registerHooks = function registerHooks(keys) {
-  $internalHooks.push(...keys);
+  $internalHooks.push.apply($internalHooks, _toConsumableArray(keys));
 };
 
-export { createDecorator, Component as default, mixins };
+exports.createDecorator = createDecorator;
+exports["default"] = Component;
+exports.mixins = mixins;

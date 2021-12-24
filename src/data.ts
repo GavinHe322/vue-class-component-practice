@@ -13,7 +13,6 @@ export function collectDataFromConstructor (vm: Vue, Component: VueClass<Vue>) {
         }
       }
     }
-
     keys.forEach(key => {
       Object.defineProperty(this, key, {
         get: () => vm[key],
