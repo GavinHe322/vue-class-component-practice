@@ -1,3 +1,7 @@
+## [1.1.8](https://github.com/GavinHe322/vue-class-component-practice/compare/v1.0.8...v1.1.8) (2021-12-24)
+
+
+
 ## [1.0.8](https://github.com/GavinHe322/vue-class-component-practice/compare/v1.0.7...v1.0.8) (2021-12-22)
 
 
