@@ -1,6 +1,6 @@
 {
   "name": "vue-class-component-practice",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "学习vue-class-component",
   "main": "dist/vue-class-component-practice.common.js",
   "module": "dist/vue-class-component-practice.esm.js",
@@ -15,7 +15,7 @@
     "release": "bash build/release.sh",
     "example": "npm run build && webpack --config example/webpack.config.js",
     "lint": "eslint --ext js,jsx,ts,tsx,vue --fix .",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -u -s"
   },
   "repository": {
     "type": "git",
