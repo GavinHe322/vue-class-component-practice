@@ -6,6 +6,10 @@
   "module": "dist/vue-class-component-practice.esm.js",
   "unpkg": "dist/vue-class-component-practice.js",
   "typings": "lib/index.d.ts",
+  "files": [
+    "dist",
+    "lib"
+  ],
   "scripts": {
     "build": "npm run build:ts && npm run build:main",
     "build:ts": "tsc -p .",
